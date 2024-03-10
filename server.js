@@ -7,9 +7,20 @@ const app = express()
 app.set('view engine','ejs')
 
 app.get('/',(req,res)=>{
-    res.render('index');
+    const articles = [{
+        title: 'Test Title',
+        createdDate:new Date(),
+        description : 'Test description',
+    },
+    {
+        title: 'Test Title',
+        createdDate: new Date(),
+        description : 'Test description',
+    }]
+
+    res.render('index',{articles:articles});
 })
 
-app.use('./articles' , articleRouter)
+app.use('./article' , articleRouter)
 
 app.listen(3000)
